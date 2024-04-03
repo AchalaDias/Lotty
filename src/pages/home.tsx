@@ -217,7 +217,7 @@ export const HomePage: FunctionComponent = (): ReactElement => {
                                     Login
                                 </button>
                                 <h4 className={"spa-app-description"}>
-                                    <a href="#" rel="noreferrer noopener">
+                                    <a href="https://wso2.com/asgardeo/docs/guides/#developer-guide" rel="noreferrer noopener">
                                         Asgardeo Auth
                                     </a>
                                 </h4>
