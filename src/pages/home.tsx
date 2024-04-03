@@ -25,9 +25,9 @@ import { useLocation } from "react-router-dom";
 import { LogoutRequestDenied } from "../components/LogoutRequestDenied";
 import { USER_DENIED_LOGOUT } from "../constants/errors";
 import { ResponsiveAppBar } from "../components/menu-bar";
-import { PlaygroundComponent } from "../components/payground";
-import { ResultsComponent } from "../components/results";
-import { PriceComponent } from "../components/prices";
+import { SlotMachineComponent } from "../components/SlotMachine";
+import { ResultsComponent } from "../components/PriceResults";
+import { LotteryComponent } from "../components/Lottery";
 
 interface DerivedState {
     authenticateResponse: BasicUserInfo,
@@ -59,9 +59,9 @@ export const HomePage: FunctionComponent = (): ReactElement => {
     const [hasAuthenticationErrors, setHasAuthenticationErrors] = useState<boolean>(false);
     const [hasLogoutFailureError, setHasLogoutFailureError] = useState<boolean>();
 
-    const [menuBarHandlerHome, setMenuBarHandlerHome] = useState<boolean>(true);
+    const [menuBarHandlerSlotMachine, setMenuBarHandlerSlotMachine] = useState<boolean>(true);
+    const [menuBarHandlerLottery, setMenuBarHandlerLottery] = useState<boolean>(false);
     const [menuBarHandlerResults, setMenuBarHandlerResults] = useState<boolean>(false);
-    const [menuBarHandlerPrices, setMenuBarHandlerPrices] = useState<boolean>(false);
 
     const search = useLocation().search;
     const stateParam = new URLSearchParams(search).get('state');
@@ -160,14 +160,23 @@ export const HomePage: FunctionComponent = (): ReactElement => {
 
                         <div>
                             <ResponsiveAppBar 
-                            setMenuBarHandlerHome={setMenuBarHandlerHome}
+                            setMenuBarHandlerSlotMachine={setMenuBarHandlerSlotMachine}
+                            setMenuBarHandlerLottery={setMenuBarHandlerLottery}
                             setMenuBarHandlerResults={setMenuBarHandlerResults}
-                            setMenuBarHandlerPrices={setMenuBarHandlerPrices}
                             />
                             {
-                                menuBarHandlerHome ?
+                                menuBarHandlerSlotMachine ?
                                     <div className="content">
-                                        <PlaygroundComponent
+                                        <SlotMachineComponent
+                                            derivedResponse={derivedAuthenticationState}
+                                        />
+                                    </div>
+                                    : null
+                            }
+                            {
+                                menuBarHandlerLottery ?
+                                    <div className="content">
+                                        <LotteryComponent
                                             derivedResponse={derivedAuthenticationState}
                                         />
                                     </div>
@@ -176,16 +185,7 @@ export const HomePage: FunctionComponent = (): ReactElement => {
                             {
                                 menuBarHandlerResults ?
                                     <div className="content">
-                                        <ResultsComponent
-                                            derivedResponse={derivedAuthenticationState}
-                                        />
-                                    </div>
-                                    : null
-                            }
-                            {
-                                menuBarHandlerPrices ?
-                                    <div className="content">
-                                       <PriceComponent
+                                       <ResultsComponent
                                             derivedResponse={derivedAuthenticationState}
                                         />
                                     </div>

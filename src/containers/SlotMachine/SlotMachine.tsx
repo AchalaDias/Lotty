@@ -23,7 +23,6 @@ const SlotMachine: React.FC = () => {
 
     return (
         <div className={styleClasses['slot-machine']}>
-
             {(wheels.score === 'full' ||  wheels.score === 'consecutive' || wheels.score === 'inconsecutive' ) && (
                 <Confetti
                 width={width}

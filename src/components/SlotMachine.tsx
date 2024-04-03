@@ -18,7 +18,7 @@ interface AuthenticationResponsePropsInterface {
  *
  * @return {React.ReactElement}
  */
-export const PlaygroundComponent: FunctionComponent<AuthenticationResponsePropsInterface> = (
+export const SlotMachineComponent: FunctionComponent<AuthenticationResponsePropsInterface> = (
     props: AuthenticationResponsePropsInterface
 ): ReactElement => {
 
@@ -29,9 +29,7 @@ export const PlaygroundComponent: FunctionComponent<AuthenticationResponsePropsI
     return (
         <>
             <h2 style={{ marginTop: 60 }}></h2>
-            <h4 className="sub-title">
-                <SlotMachine />
-            </h4>
+            <SlotMachine />
         </>
     );
 };

@@ -15,16 +15,16 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useAuthContext } from "@asgardeo/auth-react";
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
-const pages = ['Playground', 'Results', 'Prices'];
+const pages = ['Slot Machine', 'Lottery', 'Results'];
 const settings = ['Logout'];
 
 interface AuthenticationResponsePropsInterface {
     /**
      * Derived Authenticated Response.
      */
-    setMenuBarHandlerHome?: any;
+    setMenuBarHandlerSlotMachine?: any;
+    setMenuBarHandlerLottery?: any;
     setMenuBarHandlerResults?: any;
-    setMenuBarHandlerPrices?: any;
 }
 
 
@@ -33,9 +33,9 @@ export const ResponsiveAppBar: FunctionComponent<AuthenticationResponsePropsInte
 ): ReactElement => {
 
     const {
-        setMenuBarHandlerHome,
-        setMenuBarHandlerResults,
-        setMenuBarHandlerPrices
+        setMenuBarHandlerSlotMachine,
+        setMenuBarHandlerLottery,
+        setMenuBarHandlerResults
     } = props;
 
     const {
@@ -56,21 +56,22 @@ export const ResponsiveAppBar: FunctionComponent<AuthenticationResponsePropsInte
     const handleCloseNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(null);
         const page = event.currentTarget.innerText.toLowerCase();
-        setMenuBarHandlerHome(true);
-        if (page == "playground") {
-            setMenuBarHandlerHome(true);
+        setMenuBarHandlerSlotMachine(true);
+        if (page == "slot machine") {
+            setMenuBarHandlerLottery(false);
             setMenuBarHandlerResults(false);
-            setMenuBarHandlerPrices(false);
+        }
+
+        if (page == "lottery") {
+            setMenuBarHandlerSlotMachine(false);
+            setMenuBarHandlerLottery(true);
+            setMenuBarHandlerResults(false);
         }
         if (page == "results") {
-            setMenuBarHandlerHome(false);
+            setMenuBarHandlerSlotMachine(false);
+            setMenuBarHandlerLottery(false);
             setMenuBarHandlerResults(true);
-            setMenuBarHandlerPrices(false);
-        }
-        if (page == "prices") {
-            setMenuBarHandlerHome(false);
-            setMenuBarHandlerResults(false);
-            setMenuBarHandlerPrices(true);
+
         }
     };
 
