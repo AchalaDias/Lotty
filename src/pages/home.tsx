@@ -28,6 +28,7 @@ import { ResponsiveAppBar } from "../components/menu-bar";
 import { SlotMachineComponent } from "../components/SlotMachine";
 import { ResultsComponent } from "../components/PriceResults";
 import { LotteryComponent } from "../components/Lottery";
+import FOOTER_LOGOS from "../images/footer.png";
 
 interface DerivedState {
     authenticateResponse: BasicUserInfo,
@@ -221,6 +222,7 @@ export const HomePage: FunctionComponent = (): ReactElement => {
                                     </a>
                                 </h4>
                             </div>
+                            <img src={FOOTER_LOGOS} className="footer-image" />
                         </div>
                     )
             }

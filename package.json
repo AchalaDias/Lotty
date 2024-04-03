@@ -42,6 +42,7 @@
         "@emotion/styled": "^11.11.5",
         "@mui/icons-material": "^5.15.14",
         "@mui/material": "^5.15.14",
+        "@mui/x-charts": "^7.1.0",
         "@textea/json-viewer": "^2.14.0",
         "file-loader": "^6.2.0",
         "moment": "^2.30.1",
