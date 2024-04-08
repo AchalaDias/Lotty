@@ -20,6 +20,7 @@ require("dotenv").config();
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { findPort } = require("dev-server-ports");
+const Dotenv = require('dotenv-webpack');
 
 const HOST = process.env.HOST || "localhost";
 const DEFAULT_PORT = process.env.PORT || 3000;
@@ -51,13 +52,13 @@ module.exports = async () => {
         devServer: {
             static: path.resolve(__dirname, "dist"),
             historyApiFallback: true,
-            server: https ? "https": "http",
+            server: https ? "https" : "http",
             host: HOST,
             allowedHosts: devServerHostCheckDisabled ? "all" : undefined,
             port: PORT,
         },
         devtool: "source-map",
-        entry: [ "./src/app.tsx" ],
+        entry: ["./src/app.tsx"],
         mode: "development",
         module: {
             rules: [
@@ -70,11 +71,11 @@ module.exports = async () => {
                 },
                 {
                     test: /\.css$/,
-                    use: [ "style-loader", "css-loader" ]
+                    use: ["style-loader", "css-loader"]
                 },
                 {
                     test: /\.(png|jpg|cur|gif|eot|ttf|woff|woff2|svg)$/,
-                    use: [ "url-loader" ]
+                    use: ["url-loader"]
                 },
                 {
                     test: /\.html$/,
@@ -87,14 +88,14 @@ module.exports = async () => {
                 {
                     test: /\.js$/,
                     enforce: "pre",
-                    use: [ "source-map-loader" ]
+                    use: ["source-map-loader"]
                 },
                 {
                     test: /\.(sa|sc|c)ss$/,
                     use: ["style-loader", "css-loader", "sass-loader"]
                 },
-                
-               
+
+
             ]
         },
         output: {
@@ -104,10 +105,13 @@ module.exports = async () => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: "./src/index.html"
-            })
+            }),
+            new Dotenv({
+                path: ".env",
+            }),
         ],
         resolve: {
-            extensions: [ ".tsx", ".ts", ".js", ".json" ]
+            extensions: [".tsx", ".ts", ".js", ".json"]
         }
     });
 };

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "types": ["node"],
         "target": "ES6",
         "jsx": "react",
         "module": "ESNext",

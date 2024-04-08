@@ -18,7 +18,7 @@
 
 import { BasicUserInfo, Hooks, useAuthContext } from "@asgardeo/auth-react";
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from "react";
-import { default as authConfig } from "../../public/config.json";
+// import { default as authConfig } from "../../public/config.json";
 import LOGIN_LOGO from "../images/login-lady.png";
 import { DefaultLayout } from "../layouts/default";
 import { useLocation } from "react-router-dom";
@@ -125,7 +125,7 @@ export const HomePage: FunctionComponent = (): ReactElement => {
     };
 
     // If `clientID` is not defined in `config.json`, show a UI warning.
-    if (!authConfig?.clientID) {
+    if (!process.env.REACT_APP_ASGARDEO_CLIENT_ID) {
 
         return (
             <div className="content">

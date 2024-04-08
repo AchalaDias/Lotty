@@ -16,15 +16,23 @@
  * under the License.
  */
 
-import { AuthProvider, useAuthContext } from "@asgardeo/auth-react";
+import { AuthProvider, useAuthContext, AuthReactConfig } from "@asgardeo/auth-react";
 import React, { FunctionComponent, ReactElement } from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./app.scss";
 import "./lottery.scss";
-import { default as authConfig } from "../public/config.json";
+// import { default as authConfig } from "../public/config.json";
 import { ErrorBoundary } from "./error-boundary";
 import { HomePage, NotFoundPage } from "./pages";
+
+const authConfig: AuthReactConfig = {
+    clientID: process.env.REACT_APP_ASGARDEO_CLIENT_ID,
+    baseUrl: process.env.REACT_APP_ASGARDEO_BASE_URL,
+    signInRedirectURL: process.env.REACT_APP_ASGARDEO_REDIRECT_RUL,
+    signOutRedirectURL: process.env.REACT_APP_ASGARDEO_REDIRECT_RUL,
+    scope: ["openid profile"]
+};
 
 
 const AppContent: FunctionComponent = (): ReactElement => {
