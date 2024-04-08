@@ -1,3 +1,4 @@
-src/config.json
+src/dev.config.json
 .DS_Store
 node_modules
+dist
