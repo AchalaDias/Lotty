@@ -18,7 +18,7 @@
 
 import { BasicUserInfo, Hooks, useAuthContext } from "@asgardeo/auth-react";
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useState } from "react";
-import { default as authConfig } from "../config.json";
+import { default as authConfig } from "../../public/config.json";
 import LOGIN_LOGO from "../images/login-lady.png";
 import { DefaultLayout } from "../layouts/default";
 import { useLocation } from "react-router-dom";

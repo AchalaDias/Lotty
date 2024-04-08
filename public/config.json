@@ -1,0 +1,7 @@
+{
+    "clientID": "",
+    "baseUrl": "",
+    "signInRedirectURL": "",
+    "signOutRedirectURL": "",
+    "scope": ["openid profile"]
+}
